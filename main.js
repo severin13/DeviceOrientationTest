@@ -51,12 +51,13 @@ function render(event) {
     //mesh.rotation.x == event.alpha;
     if (event.alpha) {
         console.log(event.alpha);
-        mesh.rotation.y = event.alpha;
+        mesh.rotation.y += event.alpha / 100;
+
     }
 
     if (event.beta) {
         console.log(event.beta);
-        mesh.rotation.x = event.beta;
+        mesh.rotation.x += event.beta;
     }
 
 
