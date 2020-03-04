@@ -1,6 +1,6 @@
 
 
-window.addEventListener("deviceorientation", render, true);
+window.addEventListener("deviceorientation", render, {passive: false});
 
 
 // RENDERER
