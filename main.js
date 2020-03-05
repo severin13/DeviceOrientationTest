@@ -72,8 +72,8 @@ function render() {
 
 function changeOrientation(event) {
 
-    mesh.position.x += event.beta / 100;
-    mesh.position.y += event.gamma / 100;
+    mesh.position.x += event.beta / 400;
+    mesh.position.y += event.gamma / 400;
 
 }
 
