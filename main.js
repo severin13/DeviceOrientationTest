@@ -1,5 +1,15 @@
 
 
+function requestOrientationPermission(){
+    DeviceOrientationEvent.requestPermission()
+    .then(response => {
+        if (response == 'granted') {
+            window.addEventListener("deviceorientation", render, {passive: false});
+        }
+    })
+    .catch(console.error)
+}
+
 window.addEventListener("deviceorientation", render, {passive: false});
 
 
@@ -51,13 +61,13 @@ function render(event) {
     //mesh.rotation.x == event.alpha;
     if (event.alpha) {
         console.log(event.alpha);
-        mesh.rotation.y += event.alpha / 100;
+        mesh.rotation.y += event.alpha / 10;
 
     }
 
     if (event.beta) {
         console.log(event.beta);
-        mesh.rotation.x += event.beta;
+        mesh.rotation.x += event.beta / 10;
     }
 
 
