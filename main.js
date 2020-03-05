@@ -4,13 +4,19 @@ function requestOrientationPermission(){
     DeviceOrientationEvent.requestPermission()
     .then(response => {
         if (response == 'granted') {
-            window.addEventListener("deviceorientation", render, {passive: false});
+            window.addEventListener("deviceorientation", changeOrientation, {passive: false});
         }
     })
     .catch(console.error)
 }
 
-window.addEventListener("deviceorientation", render, {passive: false});
+
+window.addEventListener("deviceorientation", changeOrientation, true);
+
+
+let eleAlpha = document.querySelector('#alpha')
+let eleBeta = document.querySelector('#beta')
+let eleGamma = document.querySelector('#gamma')
 
 
 // RENDERER
@@ -56,23 +62,25 @@ scene.add(mesh);
 //RENDER LOOP
 requestAnimationFrame(render);
 
-
-function render(event) {
-    //mesh.rotation.x == event.alpha;
-    if (event.alpha) {
-        console.log(event.alpha);
-        mesh.rotation.y += event.alpha / 10;
-
-    }
-
-    if (event.beta) {
-        console.log(event.beta);
-        mesh.rotation.x += event.beta / 10;
-    }
-
+function render() {
 
     renderer.render(scene, camera);
     requestAnimationFrame(render);
+}
+
+
+
+function changeOrientation(event) {
+
+    //mesh.rotation.y = event.alpha;
+    eleAlpha.innerHTML = event.alpha;
+
+    //mesh.rotation.x = event.beta;
+    eleBeta.innerHTML = event.beta;
+
+    //mesh.rotation.x = event.gamma;
+    eleGamma.innerHTML = event.gamma;
+    
 }
 
 
