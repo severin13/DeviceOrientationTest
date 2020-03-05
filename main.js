@@ -44,7 +44,7 @@ scene.add(pointLight);
 //MATERIAL
 var material = new THREE.MeshLambertMaterial({
     color: 0xAAAAAA,
-    map: new THREE.TextureLoader().load('textures/Cardboard.jpg')
+    map: new THREE.TextureLoader().load('textures/box_texture_move.png')
     //emissive: 0xff0000,
     //emissiveIntensity: 0.1
 });
@@ -72,15 +72,9 @@ function render() {
 
 function changeOrientation(event) {
 
-    //mesh.rotation.y = event.alpha;
-    eleAlpha.innerHTML = event.alpha;
+    mesh.position.x += event.beta / 100;
+    mesh.position.y += event.gamma / 100;
 
-    //mesh.rotation.x = event.beta;
-    eleBeta.innerHTML = event.beta;
-
-    //mesh.rotation.x = event.gamma;
-    eleGamma.innerHTML = event.gamma;
-    
 }
 
 
